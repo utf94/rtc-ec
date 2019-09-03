@@ -11,8 +11,12 @@ var httpApp = express();
 httpApp.use(express.static(__dirname + "/static/"));
 
 // Start Express http server on port 8080
-var options = {pfx: fs.readFileSync("localselfsigned.pfx"), passphrase: "123456"};
-var webServer = https.createServer(options,httpApp).listen(443);
+// var options = {pfx: fs.readFileSync("localselfsigned.pfx"), passphrase: "123456"};
+// var webServer = https.createServer(options,httpApp).listen(443);
+
+
+var webServer = httpApp.listen(8010);
+
 
 // Start Socket.io so it attaches itself to Express server
 var socketServer = io.listen(webServer, {"log level":1});
